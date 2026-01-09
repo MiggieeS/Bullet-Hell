@@ -10,7 +10,7 @@ public partial class Player : CharacterBody2D
 	public PackedScene BulletScene;
 
 	[Export]
-	public float FireRate = 0.15f; // seconds per shot
+	public float FireRate = 0.15f; // measured in seconds
 
 	private float _fireCooldown = 0f;
 	private Marker2D _bulletSpawn;
