@@ -15,7 +15,7 @@ public partial class EnemyBullet : Area2D
 
 		if (Position.Y > 400 || Position.Y < -400 || Position.X < -250 || Position.X > 250)
 		{
-			GD.Print("Bullet freed at: " + Position);
+			// GD.Print("Bullet freed at: " + Position);
 			QueueFree();
 		}
 	}
