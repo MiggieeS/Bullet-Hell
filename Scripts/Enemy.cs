@@ -7,10 +7,10 @@ public partial class Enemy : Node2D
 	public PackedScene BulletScene;
 
 	[Export]
-	public float FireInterval = 0.7f;
+	public float FireInterval = 0.6f;
 
 	[Export]
-	public int BulletsPerWave = 16;
+	public int BulletsPerWave = 24;
 
 	private float _timer = 0f;
 	private float _angleOffset = 0f;
@@ -18,6 +18,8 @@ public partial class Enemy : Node2D
 	public override void _PhysicsProcess(double delta)
 	{
 		_timer -= (float)delta;
+		// GD.Print("Enemy firing check: timer = " + _timer);
+
 		if (_timer <= 0f)
 		{
 			_timer = FireInterval;
@@ -27,6 +29,7 @@ public partial class Enemy : Node2D
 
 	private void FireCirclePattern()
 	{
+
 		if (BulletScene == null)
 			return;
 
@@ -42,6 +45,7 @@ public partial class Enemy : Node2D
 			bullet.Velocity = dir * bullet.Speed;
 
 			GetTree().CurrentScene.AddChild(bullet);
+			// GD.Print("Bullet spawned with velocity: " + bullet.Velocity); 	
 		}
 
 		_angleOffset += 0.15f; // slowly rotate the pattern
