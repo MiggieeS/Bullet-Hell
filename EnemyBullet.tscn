@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://ceb67kjqmee33"]
+[gd_scene load_steps=4 format=3 uid="uid://ceb67kjqmee33"]
 
+[ext_resource type="Script" uid="uid://cqfs7pjf2x4gk" path="res://Scripts/EnemyBullet.cs" id="1_kpqax"]
 [ext_resource type="Texture2D" uid="uid://brf7rl56g6ora" path="res://icon.svg" id="1_ymxas"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kpqax"]
@@ -7,6 +8,7 @@ radius = 63.0
 height = 126.0
 
 [node name="EnemyBullet" type="Area2D"]
+script = ExtResource("1_kpqax")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_ymxas")
