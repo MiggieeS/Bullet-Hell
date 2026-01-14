@@ -32,7 +32,8 @@ public partial class Player : CharacterBody2D
 			input.Y -= 1;
 		if (Input.IsActionPressed("move_down"))
 			input.Y += 1;
-
+		// added actions in godot engine
+		
 		input = input.Normalized();
 		Velocity = input * Speed;
 		MoveAndSlide();
