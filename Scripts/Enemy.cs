@@ -57,7 +57,7 @@ public partial class Enemy : Area2D
 
 	private void OnEnemyAreaEntered(Area2D area)
 	{
-		GD.Print("Enemy hit by: " + area.Name);
+		// GD.Print("Enemy hit by: " + area.Name);
 		// onhit logic here 
 	}
 }
