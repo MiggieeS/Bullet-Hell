@@ -10,7 +10,7 @@ public partial class Player : CharacterBody2D
 	public PackedScene BulletScene;
 
 	[Export]
-	public float FireRate = 0.15f; // measured in seconds
+	public float FireRate = 0.15f;
 
 	private float _fireCooldown = 0f;
 	private Marker2D _bulletSpawn;
@@ -18,6 +18,10 @@ public partial class Player : CharacterBody2D
 	public override void _Ready()
 	{
 		_bulletSpawn = GetNode<Marker2D>("BulletSpawn");
+
+		// Connect Hitbox signal manually
+		Area2D hitbox = GetNode<Area2D>("Hitbox");
+		hitbox.AreaEntered += OnHitboxAreaEntered;
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -32,8 +36,7 @@ public partial class Player : CharacterBody2D
 			input.Y -= 1;
 		if (Input.IsActionPressed("move_down"))
 			input.Y += 1;
-		// added actions in godot engine
-		
+
 		input = input.Normalized();
 		Velocity = input * Speed;
 		MoveAndSlide();
@@ -53,9 +56,21 @@ public partial class Player : CharacterBody2D
 			{
 				PlayerBullet bullet = BulletScene.Instantiate<PlayerBullet>();
 				bullet.Position = _bulletSpawn.GlobalPosition;
-
 				GetTree().CurrentScene.AddChild(bullet);
 			}
+		}
+	}
+
+	// ✅ Signal callback for Hitbox collisions
+	private void OnHitboxAreaEntered(Area2D area)
+	{
+		GD.Print("Player hit by: " + area.Name);
+
+		// Example: check specifically for EnemyBullet
+		if (area is EnemyBullet)
+		{
+			GD.Print("Player was hit by an EnemyBullet!");
+			// TODO: reduce health, trigger death, etc.
 		}
 	}
 }

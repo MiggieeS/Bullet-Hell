@@ -48,6 +48,6 @@ public partial class Enemy : Area2D
 			// GD.Print("Bullet spawned with velocity: " + bullet.Velocity); 	
 		}
 
-		_angleOffset += 0.15f; // slowly rotate the pattern
+		_angleOffset += 0.30f; // slowly rotate the pattern
 	}
 }

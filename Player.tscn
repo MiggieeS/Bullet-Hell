@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwdu083nkqsug"]
+[gd_scene load_steps=6 format=3 uid="uid://bwdu083nkqsug"]
 
 [ext_resource type="Script" uid="uid://c7cu3if4fp7gk" path="res://Scripts/Player.cs" id="1_kpjcp"]
 [ext_resource type="PackedScene" uid="uid://cuisxr7himkut" path="res://PlayerBullet.tscn" id="2_e80uo"]
@@ -7,7 +7,11 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_e80uo"]
 radius = 60.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kne1u"]
+radius = 62.072536
+
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 4
 script = ExtResource("1_kpjcp")
 BulletScene = ExtResource("2_e80uo")
 
@@ -19,3 +23,11 @@ shape = SubResource("CircleShape2D_e80uo")
 
 [node name="BulletSpawn" type="Marker2D" parent="."]
 position = Vector2(0, -85)
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_kne1u")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
