@@ -15,6 +15,11 @@ public partial class Enemy : Area2D
 	private float _timer = 0f;
 	private float _angleOffset = 0f;
 
+	public override void _Ready()
+	{
+		AreaEntered += OnEnemyAreaEntered;
+	}
+
 	public override void _PhysicsProcess(double delta)
 	{
 		_timer -= (float)delta;
@@ -29,7 +34,6 @@ public partial class Enemy : Area2D
 
 	private void FireCirclePattern()
 	{
-
 		if (BulletScene == null)
 			return;
 
@@ -45,9 +49,15 @@ public partial class Enemy : Area2D
 			bullet.Velocity = dir * bullet.Speed;
 
 			GetTree().CurrentScene.AddChild(bullet);
-			// GD.Print("Bullet spawned with velocity: " + bullet.Velocity); 	
+			// GD.Print("Bullet spawned with velocity: " + bullet.Velocity);     
 		}
 
 		_angleOffset += 0.30f; // slowly rotate the pattern
+	}
+
+	private void OnEnemyAreaEntered(Area2D area)
+	{
+		GD.Print("Enemy hit by: " + area.Name);
+		// onhit logic here 
 	}
 }

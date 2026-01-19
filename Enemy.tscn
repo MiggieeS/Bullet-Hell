@@ -9,6 +9,8 @@ radius = 63.0
 height = 126.0
 
 [node name="Enemy" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_s7bn3")
 BulletScene = ExtResource("2_2hac7")
 
