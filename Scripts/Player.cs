@@ -18,8 +18,6 @@ public partial class Player : CharacterBody2D
 	public override void _Ready()
 	{
 		_bulletSpawn = GetNode<Marker2D>("BulletSpawn");
-
-		// Connect Hitbox signal manually
 		Area2D hitbox = GetNode<Area2D>("Hitbox");
 		hitbox.AreaEntered += OnHitboxAreaEntered;
 	}
@@ -61,16 +59,9 @@ public partial class Player : CharacterBody2D
 		}
 	}
 
-	// ✅ Signal callback for Hitbox collisions
 	private void OnHitboxAreaEntered(Area2D area)
 	{
 		GD.Print("Player hit by: " + area.Name);
-
-		// Example: check specifically for EnemyBullet
-		if (area is EnemyBullet)
-		{
-			GD.Print("Player was hit by an EnemyBullet!");
-			// TODO: reduce health, trigger death, etc.
-		}
+		// onhit logic here 
 	}
 }
