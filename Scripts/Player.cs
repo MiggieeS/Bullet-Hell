@@ -61,7 +61,7 @@ public partial class Player : CharacterBody2D
 
 	private void OnHitboxAreaEntered(Area2D area)
 	{
-		// GD.Print("Player hit by: " + area.Name);
+		// GD.Print("Player hit by: Enemy " + area.Name);
 
 		// onhit logic here 
 	}

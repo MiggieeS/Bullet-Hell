@@ -45,7 +45,6 @@ public partial class Enemy : Area2D
 				case 0: _currentPattern = FireCirclePattern; GD.Print("Pattern: Circle"); break;
 				case 1: _currentPattern = FireSpiralPattern; GD.Print("Pattern: Spiral"); break;
 				case 2: _currentPattern = FireWavePattern; GD.Print("Pattern: Wave"); break;
-				case 3: _currentPattern = FireAimedShot; GD.Print("Pattern: Aimed"); break;
 			}
 		}
 
@@ -112,23 +111,9 @@ public partial class Enemy : Area2D
 		_angleOffset += 0.5f;
 	}
 
-	private void FireAimedShot()
-	{
-		if (BulletScene == null) return;
-
-		Node2D player = GetTree().CurrentScene.GetNode<Node2D>("Player");
-		Vector2 dir = (player.GlobalPosition - GlobalPosition).Normalized();
-
-		EnemyBullet bullet = BulletScene.Instantiate<EnemyBullet>();
-		bullet.Position = GlobalPosition;
-		bullet.Velocity = dir * bullet.Speed * 5;
-
-		GetTree().CurrentScene.AddChild(bullet);
-	}
-
 	private void OnEnemyAreaEntered(Area2D area)
 	{
-		GD.Print("Player hit by: " + area.Name);
+		// GD.Print("Enemy hit by: Player " + area.Name);
 
 		// onhit logic here 
 	}
