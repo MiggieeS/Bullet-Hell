@@ -63,6 +63,6 @@ public partial class Player : CharacterBody2D
 	{
 		// GD.Print("Player hit by: Enemy " + area.Name);
 
-		// onhit logic here 
+		// onhit logic
 	}
 }

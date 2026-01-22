@@ -115,6 +115,6 @@ public partial class Enemy : Area2D
 	{
 		// GD.Print("Enemy hit by: Player " + area.Name);
 
-		// onhit logic here 
+		// onhit logic
 	}
 }
