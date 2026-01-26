@@ -34,7 +34,7 @@ public partial class Enemy : Area2D
 		_timer -= (float)delta;
 		_patternTimer -= (float)delta;
 
-		// Switch pattern randomly every few second
+		// Switch pattern randomly every few seconda
 		if (_patternTimer <= 0f)
 		{
 			_patternTimer = _rng.RandfRange(5f, 10f);
