@@ -90,7 +90,7 @@ public partial class Enemy : Area2D
 
 		GetTree().CurrentScene.AddChild(bullet);
 
-		_angleOffset += 0.8f; // tighter spiral
+		_angleOffset += 0.8f; // tighten spiral
 	}
 
 	private void FireWavePattern()
